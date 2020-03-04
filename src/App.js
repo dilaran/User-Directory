@@ -14,23 +14,13 @@ remoteEmployee = id => {
         const friends = this.state.friends.filter(friend => friend.location === "Beverly Hills");
         this.setState({ friends });
       };
-sortEmployee = id => 
-{
-        // function x (a, b){
-        //   const payA = a.pay;
-        //   const payB = b.pay;
-        //   let comparison = 0;
-        //   if (payA < payB) {
-        //     comparison = 1;
-        //   } else if (payA > payB) {
-        //     comparison = -1;
-        //   }
-        //   return comparison;
-        // }
-        friends.sort(this.name);
-        this.setState({ friends });
-      };
-    
+
+sortBy = id => {
+        let sorting = this.state.friends.sort(friend => friend.name);
+        this.setState({ sorting });
+      }
+//  this.sortBy.bind(this);    
+
   // Map over this.state.friends and render a FriendCard component for each friend object
   render() {
     return (
@@ -39,7 +29,6 @@ sortEmployee = id =>
         remoteEmployee={this.remoteEmployee}
         sortEmployee = {this.sortEmployee}
          />
-        <Title>Employee list</Title>
         {this.state.friends.map(friend => (
           <FriendCard
             id={friend.id}
@@ -48,12 +37,10 @@ sortEmployee = id =>
             image={friend.image}
             occupation={friend.occupation}
             location={friend.location}
-            pay={friend.pay}
           />
         ))}
       </Wrapper>
     );
-  }
+  };
 }
-
 export default App;
